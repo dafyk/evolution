@@ -738,6 +738,7 @@ class browser extends uploader {
 			$types = $this->config['types'];
 			$types = explode(' ',$types['images'].' '.$types['image']);
 			if (substr($name,0,1) == '.' && !$this->config['showHiddenFiles']) continue;
+			if (!mb_check_encoding($name, 'UTF-8')) continue;
 			if ($this->type == 'images' && !in_array(strtolower($ext),$types)) continue;
 			$bigIcon = file_exists("themes/{$this->config['theme']}/img/files/big/$ext.png");
 			$smallIcon = file_exists("themes/{$this->config['theme']}/img/files/small/$ext.png");
